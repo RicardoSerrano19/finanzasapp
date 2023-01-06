@@ -4,6 +4,7 @@
 ?>
 <main>
     <?php
-        include 'includes/layout/account.php'
+        include 'includes/layout/account.php';
+        include 'includes/layout/transactions.php'
     ?>
 </main>
