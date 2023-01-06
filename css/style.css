@@ -13,8 +13,14 @@ html{
 body{
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
+    padding: 0 2rem;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* Navigation */
 .navigation{
     margin: 2rem 0;
@@ -41,3 +47,28 @@ body{
     color: #2659a1;
 }
 
+/* account */
+.account{
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 1rem;
+    max-width: 600px;
+    width: 100%
+}
+
+.account-balance{
+    text-align: end;
+}
+
+.account-balance-money{
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0.5rem 0;
+}
+
+.account-balance-legend{
+    color: gray;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
