@@ -16,12 +16,12 @@
     // Get database connection
     $database = new Database();
     $db = $database->getConnection();
+    $transactionService = new TransactionService($db);
 
     if($body['action'] == "/findById"){
         // Get request
         $id = $_POST['id'];
     
-        $transactionService = new TransactionService($db);
         $result = $transactionService->getTransactionById($id);
         
         echo json_encode($result);
@@ -30,9 +30,17 @@
     if($body['action'] == "/findAll"){
         // Get request
     
-        $transactionService = new TransactionService($db);
         $result = $transactionService->getTransactions();
        
+        echo json_encode($result);
+    }
+
+    if($body['action'] == "/findByType"){
+        // Get request
+        $type = $body['type'];
+
+        $result = $transactionService->getTransactionsByType($type);
+        
         echo json_encode($result);
     }
 
