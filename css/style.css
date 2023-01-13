@@ -175,3 +175,31 @@ main{
 .e{
     color: #183153;   
 }
+
+/* INGRESOS */
+form{
+    width: 100%;
+}
+
+.field{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0.5rem 0;
+}
+
+.btn-primary{
+    border: none;
+    padding: 0.8rem;
+    color: white;
+    background-color: #183153;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.btn-primary:hover{
+    background-color: #2659a1;
+}
