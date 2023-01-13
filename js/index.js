@@ -6,7 +6,11 @@
     })
     .then(response => response.json())
     .then(data => {
-        renderTransactions(data);
+        if('error' in data){
+            console.log(data);
+        }else{
+            renderTransactions(data);
+        }
     })
 
 
