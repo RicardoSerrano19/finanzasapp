@@ -1,3 +1,47 @@
+const submitBtn = document.querySelector('#submitButton');
+
+submitBtn.addEventListener('click', (ev) => {
+    ev.preventDefault();
+
+    const category = document.querySelector("#category").value;
+    const amount = document.querySelector("#amount").value;
+    const date = document.querySelector("#date").value;
+
+    if(category == '' || amount == '' || date == ''){
+        alert("All elements are required")
+        return;
+    }
+
+    disableButton();
+    fetchTransaction(category, amount, date)
+        .then(response => response.json())
+        .then(data => {
+            if(data){
+                alert("Ingreso registrado exitosamente");
+                location.reload();
+                return;
+            }
+            if('error' in data){
+                console.log(data);
+            }
+        })
+});
+
+function fetchTransaction(pCategory, pAmount, pDate){
+    return fetch("./includes/controller/TransactionsController.php", {
+        method: 'POST',
+        body: JSON.stringify({
+            category: pCategory,
+            amount: pAmount,
+            date: pDate,
+            action: 'create'
+        })
+    });
+}
+
+function disableButton(){
+    submitBtn.disabled = true;
+}
 fetch("./includes/controller/TransactionsController.php",{
     method: 'POST',
     body: JSON.stringify({
