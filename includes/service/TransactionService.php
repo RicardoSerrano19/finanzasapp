@@ -82,7 +82,21 @@
             }
         }
     
-    
+        public function create($category, $amount, $date){
+            try{
+                $query = "INSERT INTO transactions(amount, date, category, transactionType)
+                VALUES(:amount, :date, :category, 1)";
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindValue(':category', $category, PDO::PARAM_INT);
+                $stmt->bindValue(':amount', $amount, PDO::PARAM_INT);
+                $stmt->bindValue(':date', $date, PDO::PARAM_STR);
+                $result = $stmt->execute();
+
+                return $result;
+            }catch(Exception $ex){
+                return new GlobalException($ex->getMessage(), 500, "Fatal Exception");
+            }
+        }
 
     
 }

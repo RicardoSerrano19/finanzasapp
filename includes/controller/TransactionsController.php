@@ -44,4 +44,13 @@
         echo json_encode($result);
     }
 
+    if($body['action'] == "create"){
+        $category = $body['category'];
+        $amount = $body['amount'];
+        $date = $body['date'];
+
+    $result = $transactionService->create($category, $amount, $date);
+    echo json_encode($result);
+    }
+
 ?>
