@@ -1,4 +1,4 @@
-<section class="transactions">
+<!--<section class="transactions">
     <p class="transactions-title">Ultimas transacciones</p>
     <div class="transaction">
         <div class="transaction_date">
@@ -61,4 +61,7 @@
             </div>
         </div>
     </div>
+</section> --> 
+
+<section class="transactions">
 </section>
