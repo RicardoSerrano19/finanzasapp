@@ -8,3 +8,5 @@
         include 'includes/layout/transactions.php'
     ?>
 </main>
+
+<script src="./js/index.js"></script>
