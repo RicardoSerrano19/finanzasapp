@@ -30,7 +30,8 @@
                 
                 return $result;
             }catch(Exception $ex){
-                echo $ex->getMessage();
+                $exception = new GlobalException($ex->getMessage(), 500, "Fatal Exception");
+                return $exception;
             }
         }
 
@@ -51,7 +52,33 @@
 
                 return $result;
             }catch(Exception $ex){
-                echo $ex->getMessage();
+                $exception = new GlobalException($ex->getMessage(), 500, "Fatal Exception");
+                return $exception;
+            }
+        }
+
+        public function getTransactionsByType(int $type){
+            try{
+            $query = "SELECT t.id, t.amount, t.date, c.name as category, tt.type
+                FROM transactions t
+                JOIN category c
+                ON t.category = c.id
+                JOIN transactionType tt
+                ON t.transactionType = tt.id
+                WHERE t.transactionType = :type
+                ORDER BY t.date DESC";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindValue(':type', $type, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+
+            return $result;
+            }catch(Exception $ex){
+                $exception = new GlobalException($ex->getMessage(), 500, "Fatal Exception");
+            return $exception;
             }
         }
     
